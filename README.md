@@ -1,5 +1,5 @@
 # QR-Code-App
-Android app that scans different code types and displays the content.
+Android app that scans different code types and displays the content. The app also gives access to a grid list of all codes (in QR Format and QR Content) that were scanned.
 
 # activity-main.xml
 
@@ -27,7 +27,7 @@ and the data recieved from each entry is set to the TextViews(namely, the QR for
     content.setMovementMethod(LinkMovementMethod.getInstance());
 
 This portion makes it so links within the content are clickable.
-# MainActivity
+# MainActivity.java
 This class sets up the main view and functionality of the app. The functionality for the actual scan operation is set up here. Inside the onCreate() method, an onClickListener() method
 is set to the "scan" button. When the button is clicked, the initiateScan() method is called, which opens the user's phone camera and looks for any code to scan:
 
@@ -40,3 +40,12 @@ is set to the "scan" button. When the button is clicked, the initiateScan() meth
         });
 
 When a user clicked on the "list" button, an Intent object calls the ViewActivity class and displays the list of saved codes.
+
+# Codes.java
+This class is relatively simple. It consists of the default constructor Codes that has three parameters: an Integer id, a String format (for the QR Format) and a String content (for the QR Content).
+The rest of the code consists of getters and setters for these variables. The default constructor simply assigns the variables given.
+
+# DatabaseManager.java
+Using SQLite, this class implements a database for the app. It contains three variables for the app, all private static final Strings: a variable for the ID, a varialbe for the format, and a variable for the content.
+The onCreate() method creates a table that stores the three String variables for the ID, format and content. This method is created the first time the app is run and used successfully.
+
